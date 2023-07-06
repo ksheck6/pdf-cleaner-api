@@ -4,12 +4,12 @@ Sample tests file
 
 """
 
-from django.test import TestCase
+from django.test import SimpleTestCase
 
 from app import calc
 
 
-class CalcTests(TestCase):
+class CalcTests(SimpleTestCase):
     """Tests for calculator app"""
 
     def test_add_numbers(self):

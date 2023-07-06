@@ -1,4 +1,4 @@
-FROM python:3.9.7-alpine3.14
+FROM python:3.9-alpine3.13
 LABEL maintainer="Kevin Heck"
 
 ENV PYTHONUNBUFFERED 1
