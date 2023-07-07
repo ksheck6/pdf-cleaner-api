@@ -9,6 +9,8 @@ from psycopg2 import OperationalError as Psycopg2OpError
 from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
 
+from django.db import connections
+
 
 class Command(BaseCommand):
     """Django command to pause execution until database is available"""
@@ -20,6 +22,7 @@ class Command(BaseCommand):
         while db_up is False:
             try:
                 self.check(databases=['default'])
+                connections['default'].cursor().execute('SELECT 1')
                 db_up = True
             except (Psycopg2OpError, OperationalError):
                 self.stdout.write('Database unavailable, waiting 1 second...')
