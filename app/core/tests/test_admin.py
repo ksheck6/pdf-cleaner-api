@@ -14,17 +14,17 @@ class AdminSiteTest(TestCase):
         """ Setup for admin tests, create user and client. """
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
-            email='admin@exemple.com',
+            email='admin@example.com',
             password='testpass123',
         )
         self.client.force_login(self.admin_user)
         self.user = get_user_model().objects.create_user(
-            email='user@exemple.com',
+            email='user@example.com',
             password='testpass123',
             name='Test user name',
         )
 
-    def test_users_listed(self):
+    def test_users_lists(self):
         """Test that users are listed on user page."""
         url = reverse('admin:core_user_changelist')
         res = self.client.get(url)

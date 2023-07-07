@@ -12,7 +12,7 @@ class ModelTests(TestCase):
     def test_create_user_with_email_successful(self):
         """Test creating a new user with an email is successful."""
         email = 'test@exemple.com'
-        password = 'Testpass123'
+        password = 'testpass123'
         user = get_user_model().objects.create_user(
             email=email,
             password=password,
@@ -24,14 +24,14 @@ class ModelTests(TestCase):
     def test_new_user_email_normalized(self):
         """Test the email for a new user is normalized."""
         sample_emails = [
-            ['test1@EXEMPLE.com', 'test1@exemple.com'],
-            ['Test2@Exemple.com', 'Test2@exemple.com'],
-            ['TEST3@EXEMPLE.COM', 'TEST3@exemple.com'],
-            ['test4@exemple.COM', 'test4@exemple.com'],
+            ['test1@EXAMPLE.com', 'test1@example.com'],
+            ['Test2@Example.com', 'Test2@example.com'],
+            ['TEST3@EXAMPLE.com', 'TEST3@example.com'],
+            ['test4@example.COM', 'test4@example.com'],
         ]
-        for email, execpected in sample_emails:
+        for email, expected in sample_emails:
             user = get_user_model().objects.create_user(email, 'sample123')
-            self.assertEqual(user.email, execpected)
+            self.assertEqual(user.email, expected)
 
     def test_new_user_without_email_raises_error(self):
         """ Test creating user without email raises ValueError """
